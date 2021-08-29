@@ -8,7 +8,7 @@ function printName() {
   console.log(this.name);
 }
 
-const newPrintName = printName.bind(person);
+const newPrintName = printName.bind(person); // ! this way only applys to the normal function
 newPrintName();
 
 function sum(a, b) {
