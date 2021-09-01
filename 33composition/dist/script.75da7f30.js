@@ -20482,6 +20482,18 @@ console.log(array.map(doubleAndAddOne));
 console.log((0, _lodash.groupBy)(array, function (element) {
   return element % 2;
 }));
+var arrayName = [{
+  name: "Kyle"
+}, {
+  name: "Sally"
+}, {
+  name: "Joey"
+}];
+console.log((0, _lodash.groupBy)((0, _lodash.sortBy)(arrayName, function (element) {
+  return element.name;
+}), function (element) {
+  return element.name.length;
+}));
 },{"lodash":"node_modules/lodash/lodash.js","lodash/fp":"node_modules/lodash/fp.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -20510,7 +20522,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62225" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61214" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
