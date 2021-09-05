@@ -41,7 +41,7 @@ promise
 //     console.log(1);
 //     return setTimeoutPromise(250);
 //   })
-//   .then(() => {
+//   .then(() => {   //! thats how chain different promise with then
 //     console.log(2);
 //     return setTimeoutPromise(250);
 //   })
