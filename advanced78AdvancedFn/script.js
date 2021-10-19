@@ -58,3 +58,28 @@ function fib(n, a = 0, b = 1) {
 }
 
 console.log(fib(4));
+
+let obj = (function () {
+  let name = "john";
+  return {
+    getName() {
+      return name;
+    },
+  };
+})();
+
+console.log(obj.getName());
+
+function not(f) {
+  return function () {
+    return f.call(this, arguments);
+  };
+}
+
+const even = function (x) {
+  return x;
+};
+
+const odd = not(even);
+console.log(odd(1, 2, 3));
+const result = [1, 1, 3, 5, 5].every(odd);

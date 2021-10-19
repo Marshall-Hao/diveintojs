@@ -97,4 +97,7 @@ function Beams(name, age) {
 console.log(CompanyComb.prototype.sayName);
 const kk = new Beams("a", 2);
 console.log(Object.getOwnPropertyNames(kk));
-kk.sayName;
+console.log(Beams.prototype);
+
+// kk.sayName();
+console.log(Object.getPrototypeOf(kk));
