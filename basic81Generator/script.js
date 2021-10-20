@@ -33,11 +33,22 @@ class Foo {
     this.items = items;
   }
   [Symbol.iterator]() {
-    for (const item of this.items) {
-      console.log(item);
-    }
+    let index = 0;
+    const { items } = this;
+    return {
+      next() {
+        const item = items[index++];
+        if (item) {
+          return { value: item, done: false };
+        } else {
+          return { done: true };
+        }
+      },
+    };
   }
 }
 
 const foo = new Foo(["a", "b", "c"]);
-foo[Symbol.iterator]();
+foo[Symbol.iterator]().next();
+foo[Symbol.iterator]().next();
+foo[Symbol.iterator]().next();
