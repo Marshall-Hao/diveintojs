@@ -49,6 +49,6 @@ class Foo {
 }
 
 const foo = new Foo(["a", "b", "c"]);
-foo[Symbol.iterator]().next();
-foo[Symbol.iterator]().next();
-foo[Symbol.iterator]().next();
+console.log(foo[Symbol.iterator]().next());
+console.log(foo[Symbol.iterator]().next());
+console.log(foo[Symbol.iterator]().next());
