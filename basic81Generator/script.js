@@ -52,3 +52,31 @@ const foo = new Foo(["a", "b", "c"]);
 console.log(foo[Symbol.iterator]().next());
 console.log(foo[Symbol.iterator]().next());
 console.log(foo[Symbol.iterator]().next());
+
+for (const item of foo) {
+  console.log(item);
+}
+
+// * 二叉树
+class BinaryTree {
+  constructor(value, leftChild = null, rightChild = null) {
+    this.value = value;
+    this.leftChild = leftChild;
+    this.rightChild = rightChild;
+  }
+  *[Symbol.iterator]() {
+    yield this.value;
+    if (this.leftChild) {
+      yield* this.leftChild;
+    }
+    if (this.rightChild) {
+      yield* this.rightChild;
+    }
+  }
+}
+
+const binaryTest = new BinaryTree(6, 4, 2);
+
+for (let item of binaryTest) {
+  console.log(item);
+}
