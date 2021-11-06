@@ -1,0 +1,1 @@
+(()=>{"use strict";function o(){}o.prototype.f1=function(){console.log("im f1")},o.prototype.f2=function(){console.log("im f2")},(new o).f1(),console.log(1)})();
