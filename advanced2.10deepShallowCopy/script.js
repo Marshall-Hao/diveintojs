@@ -30,7 +30,7 @@ function createReduce(dir) {
   const reduce = function (obj, func, memo, init) {
     const keys = !Array.isArray(obj) && Object.keys(obj);
     const sym = !Array.isArray(obj) && Object.getOwnPropertySymbols(obj);
-    const keysCombineSym = keys.concat(sym);
+    const keysCombineSym = keys ? keys.concat(sym) : false;
     const length = (keysCombineSym || obj).length;
     let index = dir > 0 ? 0 : length - 1;
     if (!init) {
@@ -39,7 +39,7 @@ function createReduce(dir) {
     }
 
     for (; index >= 0 && index < length; index += dir) {
-      let currentKey = keysCombineSym ? keys[index] : index;
+      let currentKey = keysCombineSym ? keysCombineSym[index] : index;
       memo = func(memo, obj[currentKey], currentKey, obj);
     }
     return memo;
@@ -53,6 +53,7 @@ function createReduce(dir) {
 
 function isObject(val) {
   return (
+    // * Object.prototype.toString.call(val) === '[object Object]'
     val !== null && typeof val === "object" && Array.isArray(val) === false
   );
 }
@@ -64,8 +65,6 @@ const x = {
     b: 3,
   },
 };
-
-const u = deepCopy(x);
 
 const ar = [1, 2, 3];
 const y = {
@@ -84,7 +83,23 @@ var r = {
   a: "z",
   z,
 };
+// r.r = r;
 
 console.log(r);
-console.log(deepCopy(r).z);
-console.log(deepCopy(r).z === r.z);
+const rr = deepCopy(r);
+console.log(rr.z.y);
+console.log(rr.z === r.z);
+
+function Person() {
+  this.name = "mar";
+  this.fuc = function () {
+    return "jeez";
+  };
+}
+Person.fuc = function () {
+  return "jeez";
+};
+
+const mas = new Person();
+console.log(mas);
+console.log(mas.name, mas.fuc(), Person.fuc());
