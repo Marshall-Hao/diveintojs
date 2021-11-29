@@ -28,3 +28,9 @@ function index() {
 // * 在vue中写oberver 要是用defineProperty固定变量权限
 
 // * 职责链模式
+function Axios() {
+  this.interceptors = {
+    request: new interceptoManner(),
+    response: new interceptoManner(),
+  };
+}
