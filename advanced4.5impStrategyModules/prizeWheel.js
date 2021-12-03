@@ -5,7 +5,8 @@ const observer = {
     this.message[type] = fn;
   },
   fire: function (type) {
-    this.message[type]();
+    let _args = Array.prototype.slice.call(arguments, 1);
+    this.message[type]().apply(this, _args);
   },
 };
 
@@ -60,19 +61,17 @@ function animation(config) {
 }
 
 moveControl();
-let _count = 0;
-observer.regist("runC", () => {
-  _count++;
-  if (_count >= 2) {
+
+observer.regist("dataBack", (res) => {
+  if (c.arr.length >= 2) {
     c();
+  } else {
+    c.arr.push(res);
   }
 });
-function a() {
-  observer.fire("runC");
-}
 
-function b() {
-  observer.fire("runC");
-}
-
+axios.get("/a").then((res) => {
+  observer.fire("dateBack", res);
+});
 function c() {}
+c.arr = [];
